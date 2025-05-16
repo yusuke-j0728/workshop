@@ -81,3 +81,12 @@ indicators. The results are saved into a text report (`report.txt`) titled "TOKE
 
 ## 🔐 Disclaimer
 This tool is for research and educational purposes. It is not a financial advice tool.
+
+
+## New Change
+| Feature                        | Description                                                                                                                                                                                                              |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Ownership check**            | New `get_owner_address()` helper fetches the `owner()` address (if the token is *Ownable*) and flags whether ownership has been renounced (`owner == 0x0`).                                                              |
+| **Liquidity-share metric**     | Calculates what percentage of the token’s **total supply** is locked in the primary LP:  \`liquidity\_share = LP reserve / total\_supply\`.                                                                              |
+| **Micro-liquidity warning**    | Triggers a red flag when the quote-side reserve is extremely thin: **< 5 WETH** or **< 5,000 USDC**.                                                                                                                     |
+| **Heuristic risk score**       | Computes an overall risk score (**0 – 10**) based on ownership status, mintability, LP share, and micro-liquidity. Scores map to **LOW / MEDIUM / HIGH / CRITICAL** risk levels.                                         |
